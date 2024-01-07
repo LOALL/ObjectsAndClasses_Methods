@@ -43,8 +43,8 @@ public class Basket {
         return commonPrice;
     }
 
-    public static void allPrice(int totalPrice) {
-        Basket.commonPrice = Basket.commonPrice + totalPrice;
+    public static void allPrice(int totalPrice, int count) {
+        Basket.commonPrice = Basket.commonPrice + totalPrice * count;
     }
 
     public static int getCommonCount() {
@@ -66,6 +66,9 @@ public class Basket {
         add(name, price, 1, weight);
     }
     public void add(String name, int price, int count, double weight) {
+        totalWeight = totalWeight + count * weight;
+
+
         boolean error = false;
         if (contains(name)) {
             error = true;
@@ -82,9 +85,11 @@ public class Basket {
 
         items = items + "\n" + name + " - " +
             count + " шт. - " + price + " руб. " + "- " + weight + " кг.";
+
         totalPrice = totalPrice + count * price;
         allCount(count);
-        totalWeight = totalWeight + count * weight;
+        allPrice(price, count);
+
     }
 
     public void clear() {
@@ -109,6 +114,5 @@ public class Basket {
         }
 
         System.out.println("Общая стоимость: " + totalPrice + " руб. " + "\n" + "Общий вес: " + totalWeight + " кг. " );
-        allPrice(totalPrice);
     }
 }

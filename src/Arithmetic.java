@@ -31,11 +31,6 @@ public class Arithmetic {
         return numberTwo;
     }
 
-
-
-
-
-
     //Ввывод числа
     public void printy(String title) {
         System.out.println(title);
